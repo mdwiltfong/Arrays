@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Arrays.iml" filepath="$PROJECT_DIR$/.idea/Arrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/References/untitled/MinimumElement/MinimumElement.iml" filepath="$PROJECT_DIR$/References/untitled/MinimumElement/MinimumElement.iml" />
       <module fileurl="file://$PROJECT_DIR$/arrays/arrays.iml" filepath="$PROJECT_DIR$/arrays/arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/References/untitled/untitled.iml" filepath="$PROJECT_DIR$/References/untitled/untitled.iml" />
     </modules>
