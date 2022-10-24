@@ -19,5 +19,13 @@ public class Main {
         System.out.println("AFTER CHANGE----------------------------------");
         System.out.println("myIntArray= "+ Arrays.toString(myIntArray));
         System.out.println("myIntArray= "+ Arrays.toString(anotherArray));
+        modifyArray(myIntArray);
+        System.out.println("AFTER modify----------------------------------");
+        System.out.println("myIntArray= "+ Arrays.toString(myIntArray));
+        System.out.println("myIntArray= "+ Arrays.toString(anotherArray));
+    }
+    private static void modifyArray(int[] array){
+        array[0]=2;
+        array = new int[] {1,2,3,4,5};
     }
 }
