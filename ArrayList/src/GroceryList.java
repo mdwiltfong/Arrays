@@ -31,4 +31,12 @@ public class GroceryList {
     public int findItem(String searchItem){
         return groceryList.indexOf(searchItem);
      }
+     public boolean onFile(String searchItem){
+        int position = findItem(searchItem);
+        if(position>=0){
+            return true;
+        }else{
+            return false;
+        }
+     }
 }
