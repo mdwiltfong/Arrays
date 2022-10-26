@@ -7,6 +7,7 @@ public class GroceryList {
         myNumbers[5]=4;
         groceryList.add(item);
     }
+
     public void printGroceryList(){
         System.out.println("You have "+ groceryList.size()+" items in your grocery list");
         for (int i = 0; i < groceryList.size(); i++) {
@@ -39,4 +40,8 @@ public class GroceryList {
             return false;
         }
      }
+
+    public ArrayList<String> getGroceryList() {
+        return groceryList;
+    }
 }

@@ -1,3 +1,5 @@
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -32,10 +34,14 @@ public class Main {
                     searchItem();
                     break;
                 case 6:
+                    processArrayList();
+                    break;
+                case 6:
                     quit = true;
                     break;
             }
         }
+
     }
 
     public static void printInstructions(){
@@ -67,5 +73,10 @@ public class Main {
         }else{
             System.out.println(searchItem+ "is not in the shopping list");
         }
+    }
+    public static void processArrayList(){
+        ArrayList<String> newArray = new ArrayList<String>();
+        newArray.addAll(groceryList.getGroceryList());
+        ArrayList<String> nextArray = new ArrayList<String>(groceryList.getGroceryList());
     }
 }
