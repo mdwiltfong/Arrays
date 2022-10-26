@@ -36,7 +36,7 @@ public class Main {
                 case 6:
                     processArrayList();
                     break;
-                case 6:
+                case 7:
                     quit = true;
                     break;
             }
@@ -78,5 +78,8 @@ public class Main {
         ArrayList<String> newArray = new ArrayList<String>();
         newArray.addAll(groceryList.getGroceryList());
         ArrayList<String> nextArray = new ArrayList<String>(groceryList.getGroceryList());
+
+        String[] myArray = new String[groceryList.getGroceryList().size()];
+        myArray=groceryList.getGroceryList().toArray(myArray);
     }
 }
