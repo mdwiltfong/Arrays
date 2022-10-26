@@ -62,7 +62,7 @@ public class Main {
     public static void searchItem(){
         System.out.println("Item to search for: ");
         String searchItem = scanner.nextLine();
-        if(groceryList.findItem(searchItem) != null){
+        if(groceryList.findItem(searchItem) >=0){
             System.out.println("Found "+searchItem+ " in our grocery list");
         }else{
             System.out.println(searchItem+ "is not in the shopping list");
