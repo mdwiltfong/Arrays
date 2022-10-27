@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*
 Goal: Write a master class called MobilePhone.
 Specs:
@@ -17,4 +19,46 @@ Specs:
 
  */
 public class MobilePhone {
+    private String myNumber;
+    private ArrayList<Contact> myContacts;
+    public boolean addNewContact(Contact contact){
+        return this.myContacts.add(contact);
+    }
+    public boolean updateContact(Contact oldContact,Contact newContact){
+        int contactPosition = findContact(oldContact);
+        if(contactPosition >=0){
+            Contact prevContact =this.myContacts.set(contactPosition,newContact);
+            if(prevContact != null){
+                return true;
+            }else{
+                return false;
+            }
+
+        }else{
+            return false;
+        }
+    }
+    public boolean removeContact(Contact targetContact){
+        int contactIndex=findContact(targetContact);
+        if(contactIndex>=0){
+            Contact contact= this.myContacts.remove(contactIndex);
+            if(contact != null){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+    public int findContact(Contact contact){
+        return this.myContacts.indexOf(contact);
+    }
+    public Contact queryContact(Contact contact){
+        int contactIndex = findContact(contact);
+        return this.myContacts.get(contactIndex);
+    }
+    public void printContacts(){
+
+    }
 }
