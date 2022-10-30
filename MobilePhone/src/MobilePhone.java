@@ -24,20 +24,21 @@ public class MobilePhone {
 
     public MobilePhone(String myNumber) {
         this.myNumber = myNumber;
-        this.myContacts=new ArrayList<>();
+        this.myContacts=new ArrayList<Contact>();
     }
 
     public boolean addNewContact(Contact contact){
-        Contact contactExists= queryContact(contact.getName());
-        if(contactExists == null){
+        int contactExists= findContact(contact.getName());
+        if(contactExists >=0){
             return this.myContacts.add(contact);
         }else{
+            System.out.println("Contact is already on file");
             return false;
         }
 
     }
     public boolean updateContact(Contact oldContact,Contact newContact){
-        int contactPosition = findContact(oldContact.getName());
+        int contactPosition = findContact(oldContact);
         if(contactPosition >=0){
             Contact prevContact =this.myContacts.set(contactPosition,newContact);
             if(prevContact != null){
