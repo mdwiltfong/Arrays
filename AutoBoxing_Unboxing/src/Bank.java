@@ -13,5 +13,20 @@ Goal: Write a class called Bank.
     Returns true fi the branch exists and false otherwise.
  */
 
+import java.util.ArrayList;
+
 public class Bank {
+    private String name;
+    private ArrayList<Branch> branches;
+    public Bank(String name){
+        this.name=name;
+        this.branches=new ArrayList<Branch>();
+    }
+
+    public boolean addBranch(String name){
+        return this.branches.add(new Branch(name));
+    }
+    public boolean addCustomer(String branchName,String customerName,double initTransaction){
+
+    }
 }

@@ -36,4 +36,12 @@ public class Branch {
     public boolean addCustomer(String name,double initTransaction){
         return this.customers.add(new Customer(name,initTransaction));
     }
+    public Customer findCustomer(String name){
+        for (int i = 0; i < this.customers.size(); i++) {
+            if(this.customers.get(i).getName().equals(name)){
+                return this.customers.get(i);
+            }
+        }
+        return null;
+    }
 }
