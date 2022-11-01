@@ -24,13 +24,28 @@ public class Bank {
     }
 
     public boolean addBranch(String name){
+        Branch branch = findBranch(name);
+        if(branch != null){
+            return false;
+        }
         return this.branches.add(new Branch(name));
     }
     public boolean addCustomer(String branchName,String customerName,double initTransaction){
             Branch branch=findBranch(branchName);
-            return branch.addCustomer(customerName,initTransaction);
+            Customer customer = branch.findCustomer(customerName);
+            if(customer != null){
+                return branch.addCustomer(customerName,initTransaction);
+            }else{
+                return false;
+            }
+
     }
-    public Branch findBranch(String branchName){
+    public boolean addCustomerTransaction(String branchName,String customerName, double transaction){
+        Branch branch = findBranch(branchName);
+        Customer customer=branch.findCustomer(customerName);
+        return customer.addTransaction(transaction);
+    }
+    private Branch findBranch(String branchName){
         for (Branch branch :
                 this.branches) {
             if(branch.getName().equals(branchName)){
@@ -38,5 +53,24 @@ public class Bank {
             }
         }
         return null;
+    }
+    public boolean listCustomers(String branchName,boolean printTransactions){
+        Branch branch = findBranch(branchName);
+        if(branch == null){
+            return false;
+        }else{
+            System.out.println("Customer details for branch "+branch.getName());
+            ArrayList<Customer> customers = branch.getCustomers();
+            for (int i = 0; i < customers.size(); i++) {
+                Customer customer =customers.get(i);
+                System.out.println("Customer: "+customer.getName()+String.format("[%o]",i));
+                for (int j = 0; j < customer.getTransactions().size(); j++) {
+                    System.out.println(String.format("[%o]",i+1)+"Amount "+customer.getTransactions().get(i));
+                }
+            }
+            return true;
+        }
+
+
     }
 }

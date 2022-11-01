@@ -18,7 +18,7 @@ Goal: Write a class called Branch with the following specs.
 
 import java.util.ArrayList;
 
-public class Branch {
+class Branch {
     private String name;
     private ArrayList<Customer> customers;
     public Branch(String name){
@@ -33,8 +33,27 @@ public class Branch {
     public ArrayList<Customer> getCustomers() {
         return customers;
     }
+
+    public boolean newCustomer(String customerName,double initialTransaction){
+        Customer customer = findCustomer(customerName);
+        if(customer != null){
+            return this.customers.add(new Customer(customerName,initialTransaction));
+        }else{
+            return false;
+        }
+    }
+    public boolean addCustomerTransaction(String customerName, double transaction){
+        Customer customer = this.findCustomer(customerName);
+        return customer.addTransaction(transaction);
+    }
     public boolean addCustomer(String name,double initTransaction){
-        return this.customers.add(new Customer(name,initTransaction));
+        Customer customer = findCustomer(name);
+        if(customer != null){
+            return this.customers.add(new Customer(name,initTransaction));
+        }else{
+            return false;
+        }
+
     }
     public Customer findCustomer(String name){
         for (int i = 0; i < this.customers.size(); i++) {
