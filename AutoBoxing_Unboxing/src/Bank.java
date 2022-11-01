@@ -27,6 +27,16 @@ public class Bank {
         return this.branches.add(new Branch(name));
     }
     public boolean addCustomer(String branchName,String customerName,double initTransaction){
-
+            Branch branch=findBranch(branchName);
+            return branch.addCustomer(customerName,initTransaction);
+    }
+    public Branch findBranch(String branchName){
+        for (Branch branch :
+                this.branches) {
+            if(branch.getName().equals(branchName)){
+                return branch;
+            }
+        }
+        return null;
     }
 }
