@@ -32,18 +32,20 @@ public class Bank {
     }
     public boolean addCustomer(String branchName,String customerName,double initTransaction){
             Branch branch=findBranch(branchName);
-            Customer customer = branch.findCustomer(customerName);
-            if(customer != null){
-                return branch.addCustomer(customerName,initTransaction);
+            if(branch != null){
+                return branch.newCustomer(customerName,initTransaction);
             }else{
                 return false;
             }
 
     }
-    public boolean addCustomerTransaction(String branchName,String customerName, double transaction){
+    public boolean addCustomerTransaction(String branchName, String customerName, double amount) {
         Branch branch = findBranch(branchName);
-        Customer customer=branch.findCustomer(customerName);
-        return customer.addTransaction(transaction);
+        if(branch != null) {
+            return branch.addCustomerTransaction(customerName, amount);
+        }
+
+        return false;
     }
     private Branch findBranch(String branchName){
         for (Branch branch :
@@ -63,10 +65,14 @@ public class Bank {
             ArrayList<Customer> customers = branch.getCustomers();
             for (int i = 0; i < customers.size(); i++) {
                 Customer customer =customers.get(i);
-                System.out.println("Customer: "+customer.getName()+String.format("[%o]",i));
-                for (int j = 0; j < customer.getTransactions().size(); j++) {
-                    System.out.println(String.format("[%o]",i+1)+"Amount "+customer.getTransactions().get(i));
+                System.out.println("Customer: "+customer.getName()+String.format("[%o]",i+1));
+                if(customer.getTransactions().size()>0 && printTransactions == true){
+                    System.out.println("Transactions");
+                    for (int j = 0; j <= customer.getTransactions().size()-1; j++) {
+                        System.out.println(String.format("[%o]  ",j+1)+"Amount "+customer.getTransactions().get(j));
+                    }
                 }
+
             }
             return true;
         }

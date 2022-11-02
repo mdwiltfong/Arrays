@@ -18,6 +18,7 @@ public class Customer {
     public Customer(String name, double initTransaction){
         this.name=name;
         this.transactions= new ArrayList<Double>();
+        addTransaction(initTransaction);
     }
 
     public String getName() {
@@ -28,7 +29,7 @@ public class Customer {
         return transactions;
     }
 
-    public boolean addTransaction(double transaction) {
-        return this.transactions.add(transaction);
+    public void addTransaction(double transaction) {
+        this.transactions.add(transaction);
     }
 }

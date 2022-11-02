@@ -36,7 +36,7 @@ class Branch {
 
     public boolean newCustomer(String customerName,double initialTransaction){
         Customer customer = findCustomer(customerName);
-        if(customer != null){
+        if(customer == null){
             return this.customers.add(new Customer(customerName,initialTransaction));
         }else{
             return false;
@@ -44,18 +44,14 @@ class Branch {
     }
     public boolean addCustomerTransaction(String customerName, double transaction){
         Customer customer = this.findCustomer(customerName);
-        return customer.addTransaction(transaction);
-    }
-    public boolean addCustomer(String name,double initTransaction){
-        Customer customer = findCustomer(name);
-        if(customer != null){
-            return this.customers.add(new Customer(name,initTransaction));
-        }else{
-            return false;
+        if(customer!= null){
+            customer.addTransaction(transaction);
+            return true;
         }
-
+        return false;
     }
-    public Customer findCustomer(String name){
+
+    private Customer findCustomer(String name){
         for (int i = 0; i < this.customers.size(); i++) {
             if(this.customers.get(i).getName().equals(name)){
                 return this.customers.get(i);
