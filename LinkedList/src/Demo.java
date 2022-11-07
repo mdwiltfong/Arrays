@@ -60,6 +60,26 @@ public class Demo {
             System.out.println("Now visiting "+listIterator.next());
             printMenu();
         }
+        while(!quit){
+            int action = scanner.nextInt();
+            scanner.nextLine();
+            switch (action){
+                case 0:
+                    System.out.println("Holiday (Vacation) over");
+                    quit = true;
+                    break;
+            }
+
+        }
+    }
+    private static void printMenu(){
+        System.out.println("Available actions: \n press");
+        System.out.println("0 - to quit\n"+
+                "1 - Go to next city\n"+
+                "2 - Go to previous city\n"+
+                "3 - Print menu options\n"+
+                "");
+
     }
 
 }
