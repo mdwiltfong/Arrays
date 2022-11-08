@@ -9,10 +9,13 @@ Goal: Write a class called Album.
     2. findSong(), has one parameter of type String (title of song), and returns a Song. Returns null if the song doesn't exist.
     3. addToPlayList(), has two parameters of type int (track number of song in album), and LinkedList(the playlist) that holds
     objects of type Song and returns a boolean. Returns true if it exists, and that it was successfully added to the playlist.
-    4. Another addToPlayList() function
+    4. Another addToPlayList() function. Two parameters of type String (title of song) and a LinkedList (the playlist).
+    Returns true if the song exists in the playlist and was successfully added. False otherwise.
  */
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class Album {
     private String name;
@@ -25,9 +28,14 @@ public class Album {
         this.songs=new ArrayList<Song>();
     }
     public boolean addSong(String title,double duration){
-        return this.songs.add(new Song(title,duration));
+        Song song=findSong(title);
+        if(song==null){
+            return this.songs.add(new Song(title,duration));
+        }
+        return false;
+
     }
-    public Song findSong(String title){
+    private Song findSong(String title){
         for (int i = 0; i < this.songs.size(); i++) {
             Song song=this.songs.get(i);
             if(song.getTitle().equals(title)){
@@ -36,4 +44,43 @@ public class Album {
         }
         return null;
     }
+    public boolean addToPlayList(int trackNumber, LinkedList<Song> playList){
+        ListIterator<Song> playListIterator=playList.listIterator();
+        if(trackNumber>this.songs.size() || trackNumber<0){
+            return false;
+        }
+        Song song;
+        if(trackNumber==0){
+             song = this.songs.get(trackNumber);
+        }else{
+            song = this.songs.get(trackNumber-1);
+        }
+
+        while(playListIterator.hasNext()){
+            int comparison = playListIterator.next().toString().compareTo(song.toString());
+            if(comparison ==0){
+                System.out.println("Song is already in the playlist");
+                return false;
+            }
+        }
+        playListIterator.add(song);
+        return true;
+    }
+    public boolean addToPlayList(String songTitle,LinkedList<Song> playList){
+        Song song = findSong(songTitle);
+        if(song == null){
+            return false;
+        }
+        ListIterator<Song> playListIterator=playList.listIterator();
+        while(playListIterator.hasNext()){
+            int comparison = playListIterator.next().toString().compareTo(song.toString());
+            if(comparison ==0){
+                System.out.println("Song is already in the playlist");
+                return false;
+            }
+        }
+        playListIterator.add(song);
+        return true;
+    }
+
 }
