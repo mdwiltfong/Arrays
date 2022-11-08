@@ -12,5 +12,28 @@ Goal: Write a class called Album.
     4. Another addToPlayList() function
  */
 
+import java.util.ArrayList;
+
 public class Album {
+    private String name;
+    private String artist;
+    private ArrayList<Song> songs;
+
+    public Album(String name, String artist){
+        this.name = name;
+        this.artist=artist;
+        this.songs=new ArrayList<Song>();
+    }
+    public boolean addSong(String title,double duration){
+        return this.songs.add(new Song(title,duration));
+    }
+    public Song findSong(String title){
+        for (int i = 0; i < this.songs.size(); i++) {
+            Song song=this.songs.get(i);
+            if(song.getTitle().equals(title)){
+                return song;
+            }
+        }
+        return null;
+    }
 }
