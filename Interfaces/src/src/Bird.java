@@ -1,4 +1,4 @@
-public class Bird extends Animal{
+public abstract class Bird extends Animal{
     public Bird(String name) {
         super(name);
     }
@@ -12,4 +12,6 @@ public class Bird extends Animal{
     public void breathe() {
         System.out.println("Breath in, breathe out, repeat");
     }
+    public abstract void fly();
+
 }

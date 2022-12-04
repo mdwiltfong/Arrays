@@ -4,6 +4,15 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static Button btnPrint = new Button("Print");
     public static void main(String[] args) {
+        Parrot parrot= new Parrot("Australian ringneck");
+        parrot.breathe();
+        parrot.eat();
+        parrot.fly();
+
+        Penguin penguin=new Penguin("Emperor");
+        penguin.fly();
+
+
        /* class ClickListener implements Button.OnClickListener{
             public ClickListener(){
                 System.out.println("I've been attached");
@@ -15,14 +24,14 @@ public class Main {
             }
 
         }
-        btnPrint.setOnClickListener(new ClickListener());*/
+        btnPrint.setOnClickListener(new ClickListener());
         btnPrint.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(String title) {
                 System.out.println(title+" was clicked.");
             }
         });
-        listen();
+        listen();*/
 
 
  /*
